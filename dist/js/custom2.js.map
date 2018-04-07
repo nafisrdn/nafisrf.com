@@ -1,0 +1,1 @@
+{"version":3,"sources":["js/custom2.js"],"names":["msg2","document","innerText"],"mappings":"aAAA,IAAIA,KAAO,QAAXC,SAAID,eAAJ,KAAAE,UAAA,SAAAF","file":"custom2.js","sourcesContent":["let msg2 = 'OKAY!';\r\n\r\ndocument.getElementById('p').innerText = `msg2: ${msg2}`;"]}

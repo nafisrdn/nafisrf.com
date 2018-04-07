@@ -1,0 +1,57 @@
+:root{
+    font-size: 16px;
+    // background: black;
+    // @media screen and (max-width: $breakpoint-laptop){
+        
+    // }
+
+    // @media screen and (max-width: $breakpoint-tablet){
+    //     font-size: 12px;
+    // }
+
+    @media screen and (max-width: $breakpoint-mobile){
+        font-size: 20px;
+    }
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a{
+    margin-top: 0;
+}
+
+canvas{
+    border: 0;
+}
+
+a{
+    text-decoration: none;
+
+    &:hover{
+        color: $blue;
+    }
+}
+
+ul{
+    list-style: none;
+}
+
+.wrapper{
+    max-width: 1619px;
+    padding: 60px;
+    margin: 0 auto;
+
+}
+
+.show{
+    display: block !important;
+}
+
