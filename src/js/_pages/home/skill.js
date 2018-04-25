@@ -8,7 +8,7 @@ let skillSection = {
     }
 }
 
-let skillSketch = p => {
+let skillSketch = function(p){
 
     let brain;
 

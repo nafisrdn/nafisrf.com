@@ -1,55 +1,45 @@
-// const workOuter = document.querySelector('#work .work-outer');
-// const workArticle = document.querySelector('#work article');
-// const workArticleHeight =
-//     parseInt(window.getComputedStyle(workArticle, null).getPropertyValue("height")) 
-//     + parseInt(window.getComputedStyle(workArticle, null).getPropertyValue("margin"));
-
-// function setWork() {
-//     workOuter.setAttribute('style', `
-//         height: ${(workArticleHeight * 2)}px;
-//     `);
-// }
-
-// setWork();
-
-// window.addEventListener('resize', () => {
-//     setWork();
-// })
-
-// console.log(window.getComputedStyle(workArticle, null).getPropertyValue("height"));
 
 
-const workWrapper = document.querySelector('.work-wrapper');
-const workWrapperWidth =
-    parseInt(window.getComputedStyle(workWrapper, null).getPropertyValue("height"))
-    + parseInt(window.getComputedStyle(workWrapper, null).getPropertyValue("margin"));
+$(document).ready(() => {
 
+    const workWrapper = $('.work-wrapper');
+    const group = $('.work-group');
 
-const workGroup = document.querySelectorAll('.work-group');
-const workGroupWidth =
-    parseInt(window.getComputedStyle(workGroup[0], null).getPropertyValue("height")) 
-    + parseInt(window.getComputedStyle(workGroup[0], null).getPropertyValue("margin"));
+    let groupLength = workWrapper.children().length;
+    let visible = 1;
+    let index = 0;
+    let endIndex = (group.length / visible) - 1;
 
+    // console.log(workWrapper.children());
+    
 
-const workPaginatorNum = document.querySelectorAll('.work-paginator ul li a');
+    for (let i = 0; i < groupLength; i++) {
+        $('.work-paginator ul').append(`
+        <li><a href='#'>${i + 1}</a></li>`);
 
-const worksPos = {};
-
-
-
-for (let i = 0; i < workPaginatorNum.length; i++) {
-    const paginator = workPaginatorNum[i];
-    console.log(i);
-    paginator.addEventListener('click', () => {
         console.log(i);
-        
-        workWrapper.setAttribute('style', 
-            `transform: translateX(-${workWrapperWidth}px)`);
+    }
 
-    })
-}
+    $('.work-paginator .icon-arrow-left').click(() => {
+        if (index > 0) {
+            index--;
+            group.animate({ 'left': `+=${group.width()}` });
+        }else{
+            index = endIndex;
+            group.animate({'left': `-${group.width() * (groupLength - 1)}`});
+        }
 
-workGroup.forEach(function (work) {
-    console.log(work);
+        console.log(index);
 
+    });
+
+    $('.work-paginator .icon-arrow-right').click(() => {
+        if (index < endIndex) {
+            index++;
+            group.animate({ 'left': `-=${group.width()}` });
+        }else {
+            index = 0;
+            group.animate({ 'left': '0px' });
+        }
+    });
 });

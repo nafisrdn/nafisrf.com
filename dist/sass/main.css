@@ -663,14 +663,15 @@ section#work {
     display: block;
     white-space: nowrap;
     font-size: 0;
-    overflow: auto; }
+    overflow: hidden; }
     section#work .work-outer .center {
       width: 1000px;
       max-width: 100%;
       margin: auto; }
     section#work .work-outer .work-group {
       width: 100%;
-      display: inline-block; }
+      display: inline-block;
+      position: relative; }
       section#work .work-outer .work-group article {
         position: relative; }
         section#work .work-outer .work-group article .work-title {
@@ -721,7 +722,8 @@ section#work {
       left: 3%;
       top: 47%; }
     section#work .work-paginator [class^="icon-"], section#work .work-paginator [class*=" icon-"] {
-      font-size: 3.9rem; }
+      font-size: 3.9rem;
+      cursor: pointer; }
     section#work .work-paginator ul {
       display: -webkit-box;
       display: -ms-flexbox;

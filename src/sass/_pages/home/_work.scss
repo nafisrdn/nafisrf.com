@@ -14,7 +14,7 @@ section#work{
         display: block;
         white-space: nowrap;
         font-size: 0;
-        overflow: auto;
+        overflow: hidden;
 
         .center{
             width: 1000px;
@@ -26,7 +26,7 @@ section#work{
 
             width: 100%;
             display: inline-block;
-
+            position: relative;
             
 
             article{
@@ -119,6 +119,7 @@ section#work{
 
         [class^="icon-"], [class*=" icon-"]{
             font-size: 3.9rem;
+            cursor: pointer;
         }
 
         ul{
