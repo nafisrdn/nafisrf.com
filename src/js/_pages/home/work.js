@@ -20,7 +20,8 @@ updatePaginatorNumbers(1);
 $('.work-paginator ul li').click(function() {
     updatePaginatorNumbers($(this).index() + 1);
     index = $(this).index() + 1;
-    console.log($(this).index());
+
+    group.animate({ 'left': `-${group.width() * (index - 1)}` });
     
 });
 
