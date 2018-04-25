@@ -1,65 +1,42 @@
-/*
-
-const nav = document.querySelector('header#top nav');
-const navToggle = document.querySelector('.mobile-nav-toggle');
-const overlay = document.querySelector('#header-overlay');
-const itemList = document.querySelector('header#top nav ul li a');
-
-let headerShow = false;
-let itemListPaddingRight = window.getComputedStyle(itemList, null).getPropertyValue('padding-right');
-let navHideX = parseInt(nav.offsetWidth) + parseInt(itemListPaddingRight) - 30;
-// nav.setAttribute('style', `transform:translate(${nav.offsetWidth}px);`)
-
-
-navToggle.addEventListener('click', () => {
-    navShow(headerShow);
-    headerShow = !headerShow;
-});
-
-overlay.addEventListener('click', () => {
-    navShow(true);
-})
-
-
-function navShow(b){
-    if (!b) {
-        nav.setAttribute('style', `transform: translateX(0);`);
-        overlay.setAttribute('style', 'display:block; opacity:0.5; z-index:100;');
-        
-        navToggle.classList.add('is-open');
-    } else {
-        nav.setAttribute('style', `transform:translateX(${navHideX}px);`)
-        overlay.setAttribute('style', 'display:none; opacity:0; z-index:-100;');
-        
-        navToggle.classList.remove('is-open');
-        console.log(nav.offsetWidth);
-    }
-
-    
-    
-    
-}
-
-*/
-
+const nav = document.querySelector('header#top nav.items');
 const navListParrent = document.querySelector('header#top nav ul');
 const navList = document.querySelector('header#top nav ul li');
 const navListItems = document.querySelectorAll('header#top nav ul li a');
 const navToggle = document.querySelector('.nav-toggle');
+const firstSection = document.querySelector('body section');
 
 let headerShow = false;
+
+nav.classList.add('nav-nobg');
 
 navToggle.addEventListener('click', () => {
     navShow(headerShow);
     headerShow = !headerShow;
-    console.log('test');
+});
+
+window.addEventListener('scroll', e => {
+
+    if (window.pageYOffset > getOffsetTop(firstSection) - (nav.offsetHeight / 2) &&
+        window.pageYOffset < getOffsetTop(firstSection) + firstSection.offsetHeight - (nav.offsetHeight / 2)) {
+
+        nav.classList.remove('nav-bg');
+    }else{
+        nav.classList.add('nav-bg');
+    }
+
+    // console.log(firstSection);
     
 });
 
-// overlay.addEventListener('click', () => {
-//     navShow(true);
-// })
-
+function getOffsetTop(elem) {
+    var offsetTop = 0;
+    do {
+        if (!isNaN(elem.offsetTop)) {
+            offsetTop += elem.offsetTop;
+        }
+    } while (elem = elem.offsetParent);
+    return offsetTop;
+}
 
 function navShow(b) {
     if (!b) {

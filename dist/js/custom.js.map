@@ -1,1 +1,0 @@
-{"version":3,"sources":["js/custom.js"],"names":["msg","document","innerText","getElementById"],"mappings":"aAAA,IAAIA,IAAM,iBAAVC,SAAID,eAAM,MAAVE,UAAA,QAAAF,IAEAC,QAAAA,IAASE","file":"custom.js","sourcesContent":["let msg = 'WASSAP ChrOme!';\r\n\r\ndocument.getElementById('h1').innerText = `msg: ${msg}`;\r\n\r\nconsole.log(msg);\r\n\r\n"]}

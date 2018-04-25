@@ -2,18 +2,22 @@ $nav-opacity: 0.9;
 $nav-ul-width: 200px;
 
 header#top{
-
     width: 100%;
     position: fixed;
     z-index: 100000;
 
     nav.items{
-
+        
+        height: 57px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
         padding: 0 20px;
+        // background: $dark;
+        background: inherit;
+        opacity: 1;
         
+       
 
         ul{
             padding: 0;
@@ -21,13 +25,17 @@ header#top{
         }
 
         ul li a{
-            transition: ease-in-out .7s all;
+            transition: ease-in-out .7s right;
             position: relative;
-            color: white;
+            color: $white;
             display: inline-block;
             font-size: 1.1rem;
             min-width: 70px;
             text-align: center;
+
+            &:hover{
+                color: $aqua;
+            }
         }
 
         .nav-toggle{
@@ -104,6 +112,9 @@ header#top{
     // Reset js styles
     @media (min-width: $breakpoint-mobile){
         nav.items{
+
+            transition: ease .8s background;
+
             ul{
                 width: inherit !important;
 
@@ -112,9 +123,24 @@ header#top{
                 }
             }
         }
+
+        nav.items.nav-bg{
+            background: $blue;
+            opacity: 0.8;
+        }
        
     }
 
+    @media (max-width: $breakpoint-tablet){
+        nav.items{
+            ul li a{
+                // font-size: 1.8rem;
+                // width: 3.8em;
+            }
+        }
+    }
+
+    // media header#top
     @media (max-width: $breakpoint-mobile){
 
         nav.items{
@@ -144,6 +170,8 @@ header#top{
                 display: block;
                 height: 50px;
                 line-height: 50px;
+                font-size: 2.5rem;
+                width: 100%;
             }
 
             .nav-toggle{

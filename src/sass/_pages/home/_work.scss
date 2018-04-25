@@ -1,0 +1,158 @@
+section#work{
+    background-color: $super-dark;
+    padding: 3em 0;
+    overflow: hidden;
+
+    .title{
+        text-align: center;
+        // margin: 0;
+    }
+
+    .work-outer{
+
+        width: 100%;
+        display: block;
+        white-space: nowrap;
+        font-size: 0;
+        overflow: auto;
+
+        .center{
+            width: 1000px;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .work-group{
+
+            width: 100%;
+            display: inline-block;
+
+            
+
+            article{
+
+                position: relative;
+
+                .work-title{
+                    color: $aqua;
+                    font-size: 3rem;
+                    margin: 0;
+                    position: absolute;
+                }
+
+                img{
+                    width: 80%;
+                }
+            }
+
+            .article-left{
+
+                margin-bottom: 10rem;
+
+                .work-title{
+                    text-align: left;
+                    left: 70%;
+                    bottom: 20px;
+                }
+
+                img{
+
+                }
+            }
+
+            .article-right{
+
+
+                .work-title{
+                    text-align: right;
+                    right: 70%;
+                    top: 20px;
+                }
+
+                img{
+                    float: right;
+                }
+            }
+
+            @media (max-width: $breakpoint-tablet){
+                article{
+                    .work-title{
+                        position: relative;
+                        @include reset-position();
+                    }
+
+                    img{
+                        width: 100%;
+                        float: none;
+                    }
+                }
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+    .work-paginator{
+
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-top: 1.5em + 3em;
+
+        &::after{
+            content: '';
+            display: block;
+            width: 94%;
+            height: 0.2em;
+            background: white;
+            position: absolute;
+            left: 3%;
+            top: 47%;
+        }
+
+        [class^="icon-"], [class*=" icon-"]{
+            font-size: 3.9rem;
+        }
+
+        ul{
+            display: flex;
+            justify-content: center;
+            text-decoration: none;
+            
+
+            li{
+
+                margin: 0 100%;
+                margin-top: -0.7em;
+
+                a{
+                    font-size: 2rem;
+                    color: $blue;
+
+                    &:hover {
+                        color: $aqua;
+                        text-decoration: underline;
+                    }
+                }
+                &:first-child {
+                    a{
+                        color: $aqua;
+                        text-decoration: underline;
+                    }
+
+                }
+
+            }
+
+        }
+        
+    }
+
+}

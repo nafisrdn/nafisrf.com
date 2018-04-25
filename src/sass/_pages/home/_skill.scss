@@ -1,0 +1,66 @@
+section#skill{
+
+        position: relative;
+        z-index: 2;
+        
+        .title{
+            text-align: center;
+            position: relative;
+            top: -0.7em;
+        }
+        
+        .content{
+            // background: red;
+
+            
+
+            .vertical-center{
+                height: 77.5vh;
+                display: flex;
+                align-items: center;
+                position: relative;
+                top: -4em;
+            }
+
+            .flex{
+                display: flex;
+                justify-content: space-between;flex: 1;
+
+                
+                h4{
+                    font-size: 2.2rem;
+                    margin-bottom: 0.1em;
+                }
+
+                ul li{
+                    font-size: 1.3rem;
+                    color: $blue;
+                }
+
+                .left-list{
+                    text-align: left;
+
+                    ul li{
+                        &::before{
+                            content: '- ';
+                        }
+                    }
+                }
+
+                .right-list{
+                    text-align: right;
+
+                    ul li{
+                        &::after{
+                            content: ' -';
+                        }
+                    }
+                }
+            }
+        }
+
+        #sketch-skill{
+            height: 100%;
+            width: 100%;
+        }
+    }
