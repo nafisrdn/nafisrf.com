@@ -42,7 +42,7 @@ $(document).ready(() => {
 
         updatePaginatorNumbers(index + 1);
     });
-
+// asd
     function updatePaginatorNumbers(i) {
         const num = $(`.work-paginator ul li:nth-child(${i})`);
 
