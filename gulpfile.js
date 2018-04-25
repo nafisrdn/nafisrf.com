@@ -15,6 +15,7 @@ const browserSync   = require('browser-sync').create();
 const concatVendor  = require('gulp-concat-vendor');
 const plumber       = require('gulp-plumber');
 const concat        = require('gulp-concat');
+const insert        = require('gulp-insert');
 
 gulp.task('sass', () => {
     return gulp.src('src/sass/**/*.scss')
@@ -39,6 +40,7 @@ gulp.task('js', () => {
         [
             'src/js/layouts/*.js',
             'src/js/_pages/**/*.js',
+            'src/js/theme.js'
         ])
         .pipe(plumber())
         .pipe(concat('app.js'))
@@ -92,7 +94,7 @@ gulp.task('serve', ()=>{
 gulp.task('watch', ['serve', 'sass'], ()=>{
     gulp.watch('src/sass/**/*.scss', ['sass']);
     gulp.watch('src/**/*.html', ['html']);
-    gulp.watch(['src/js/layouts/*.js', 'src/js/_pages/**/*.js'], ['js']);
+    gulp.watch(['src/js/theme.js' ,'src/js/layouts/*.js', 'src/js/_pages/**/*.js'], ['js']);
     gulp.watch('src/js/vendors/*.js', ['vendors']);
 });
 
