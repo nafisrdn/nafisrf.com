@@ -29,9 +29,8 @@ $(document).ready(function() {
 
     $('.work-paginator ul li').click(function () {
         updatePaginatorNumbers($(this).index() + 1);
-        index = $(this).index() + 1;
-
-        group.animate({ 'left': `-${group.width() * (index - 1)}` });
+        index = $(this).index();
+        group.animate({ 'left': `-${group.width() * (index)}` });
 
     });
 
