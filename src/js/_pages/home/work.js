@@ -10,15 +10,14 @@ $(document).ready(() => {
     let index = 0;
     let endIndex = (group.length / visible) - 1;
 
-    // console.log(workWrapper.children());
     
 
     for (let i = 0; i < groupLength; i++) {
         $('.work-paginator ul').append(`
         <li><a href='#'>${i + 1}</a></li>`);
-
-        console.log(i);
     }
+
+    updatePaginatorNumbers(1);
 
     $('.work-paginator .icon-arrow-left').click(() => {
         if (index > 0) {
@@ -29,8 +28,7 @@ $(document).ready(() => {
             group.animate({'left': `-${group.width() * (groupLength - 1)}`});
         }
 
-        console.log(index);
-
+        updatePaginatorNumbers(index + 1);
     });
 
     $('.work-paginator .icon-arrow-right').click(() => {
@@ -41,5 +39,15 @@ $(document).ready(() => {
             index = 0;
             group.animate({ 'left': '0px' });
         }
+
+        updatePaginatorNumbers(index + 1);
     });
+
+    function updatePaginatorNumbers(i) {
+        const num = $(`.work-paginator ul li:nth-child(${i})`);
+
+        $('.work-paginator ul li').removeClass('selected');
+
+        num.addClass('selected');
+    }
 });

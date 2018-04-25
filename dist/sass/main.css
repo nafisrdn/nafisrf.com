@@ -732,6 +732,9 @@ section#work {
           -ms-flex-pack: center;
               justify-content: center;
       text-decoration: none; }
+      section#work .work-paginator ul li.selected a {
+        color: #92CDCF;
+        text-decoration: underline; }
       section#work .work-paginator ul li {
         margin: 0 100%;
         margin-top: -0.7em; }
@@ -741,9 +744,6 @@ section#work {
           section#work .work-paginator ul li a:hover {
             color: #92CDCF;
             text-decoration: underline; }
-        section#work .work-paginator ul li:first-child a {
-          color: #92CDCF;
-          text-decoration: underline; }
 
 section#contact {
   height: 100vh; }

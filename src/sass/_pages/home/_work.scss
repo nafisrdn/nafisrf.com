@@ -127,6 +127,12 @@ section#work{
             justify-content: center;
             text-decoration: none;
             
+            li.selected{
+                a{
+                    color: $aqua;
+                    text-decoration: underline;
+                }
+            }
 
             li{
 
@@ -141,13 +147,6 @@ section#work{
                         color: $aqua;
                         text-decoration: underline;
                     }
-                }
-                &:first-child {
-                    a{
-                        color: $aqua;
-                        text-decoration: underline;
-                    }
-
                 }
 
             }
