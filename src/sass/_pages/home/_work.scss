@@ -110,11 +110,11 @@ section#work{
         &::after{
             content: '';
             display: block;
-            width: 94%;
             height: 0.2em;
             background: white;
             position: absolute;
             left: 3%;
+            right: 3%;
             top: 47%;
         }
 
@@ -152,6 +152,13 @@ section#work{
 
             }
 
+        }
+
+        @media (max-width: $breakpoint-mobile){
+            &::after{
+                left: 10%;
+                right: 10%;
+            }
         }
         
     }

@@ -720,11 +720,11 @@ section#work {
     section#work .work-paginator::after {
       content: '';
       display: block;
-      width: 94%;
       height: 0.2em;
       background: white;
       position: absolute;
       left: 3%;
+      right: 3%;
       top: 47%; }
     section#work .work-paginator [class^="icon-"], section#work .work-paginator [class*=" icon-"] {
       font-size: 3.9rem;
@@ -749,6 +749,10 @@ section#work {
           section#work .work-paginator ul li a:hover {
             color: #92CDCF;
             text-decoration: underline; }
+    @media (max-width: 480px) {
+      section#work .work-paginator::after {
+        left: 10%;
+        right: 10%; } }
 
 section#contact {
   height: 100vh; }
