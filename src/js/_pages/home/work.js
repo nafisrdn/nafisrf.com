@@ -25,22 +25,21 @@ $(document).ready(function() {
     workPaginator.css('top', `-${(workSection.height() / 2) - 70}px`);
     // console.log(workSection.height());
 
-    updatePaginatorNumbers(1);
+    updatePaginatorNumbers(1);  
 
     $('.work-paginator ul li').click(function () {
         updatePaginatorNumbers($(this).index() + 1);
+        
         index = $(this).index();
-        group.animate({ 'left': `-${group.width() * (index)}` });
+        leftWork(`-${group.width() * (index)}px`);
 
     });
 
     $('.work-paginator .icon-arrow-left').click(() => {
         if (index > 0) {
-            index--;
-            group.animate({ 'left': `+=${group.width()}` });
+            previousWork();
         } else {
-            index = endIndex;
-            group.animate({ 'left': `-${group.width() * (groupLength - 1)}` });
+            endWork();
         }
 
         updatePaginatorNumbers(index + 1);
@@ -48,15 +47,38 @@ $(document).ready(function() {
 
     $('.work-paginator .icon-arrow-right').click(() => {
         if (index < endIndex) {
-            index++;
-            group.animate({ 'left': `-=${group.width()}` });
+            nextWork();
         } else {
-            index = 0;
-            group.animate({ 'left': '0px' });
+            startWork();
         }
 
         updatePaginatorNumbers(index + 1);
     });
+
+    function leftWork(pos) {
+        group.css({ 'left': pos });
+        
+    }
+
+    function previousWork() {
+        index--;
+        group.css({ 'left': `+=${group.width()}` });
+    }
+
+    function nextWork() {
+        index++;
+        group.css({ 'left': `-=${group.width()}` });
+    }
+
+    function startWork() {
+        index = 0;
+        group.css({ 'left': '0px' });
+    }
+
+    function endWork() {
+        index = endIndex;
+        group.css({ 'left': `-${group.width() * (groupLength - 1)}` });
+    }
 
     function updatePaginatorNumbers(i) {
         const num = $(`.work-paginator ul li:nth-child(${i})`);
