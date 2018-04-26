@@ -660,6 +660,23 @@ section#work {
   background-color: #1C1D21;
   padding: 3em 0;
   overflow: hidden; }
+  section#work::before, section#work::after {
+    content: "";
+    position: absolute;
+    top: -301px;
+    height: 370px;
+    background: white;
+    border: 1px solid white; }
+  section#work::before {
+    left: 0;
+    right: 50%;
+    -webkit-transform: skewY(10deg);
+            transform: skewY(10deg); }
+  section#work::after {
+    left: 50%;
+    right: 0;
+    -webkit-transform: skewY(-10deg);
+            transform: skewY(-10deg); }
   section#work .title {
     text-align: center; }
   section#work .work-outer {

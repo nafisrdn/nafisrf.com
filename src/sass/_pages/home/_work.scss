@@ -3,6 +3,27 @@ section#work{
     padding: 3em 0;
     overflow: hidden;
 
+    &::before, &::after{
+        content: "";
+        position: absolute;
+        top: -301px;
+        height: 370px;
+        background: white;
+        border: 1px solid white;
+    }
+
+    &::before{
+        left:0;
+        right: 50%;
+        transform: skewY(10deg);
+    }
+
+    &::after{
+        left:50%;
+        right: 0;
+        transform: skewY(-10deg);
+    }
+
     .title{
         text-align: center;
         // margin: 0;
