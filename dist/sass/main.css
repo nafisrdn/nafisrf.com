@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,400");
 html {
   line-height: 1.15;
   /* 1 */
@@ -366,7 +366,7 @@ h2 {
 
 p {
   font-size: 1.3rem;
-  line-height: 1.5rem; }
+  line-height: 2.2rem; }
 
 ul {
   padding: 0;
@@ -822,16 +822,39 @@ section#contact {
       section#contact .flex .email a {
         font-size: 2rem; } }
 
-section#first {
-  background: #31353D;
+.work-page section#first {
+  background: #1C1D21;
   padding: 100px 0; }
-  section#first h3 {
+  .work-page section#first h3 {
     color: #92CDCF;
     font-size: 4rem;
     position: absolute;
     right: 0%;
     bottom: 0%; }
-  section#first img {
+  .work-page section#first img {
     width: 80%; }
+
+.work-page section#post-content {
+  padding: 90px 0;
+  min-height: 80vh; }
+  .work-page section#post-content ul {
+    margin-bottom: 50px; }
+    .work-page section#post-content ul li {
+      font-size: 4rem;
+      font-style: italic;
+      font-weight: 100;
+      color: #0062ff; }
+      .work-page section#post-content ul li::before {
+        content: "- "; }
+  .work-page section#post-content p.main img {
+    margin: 50px auto;
+    opacity: .89;
+    -webkit-transition: .7s all;
+    transition: .7s all;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 3px 61px -4px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 3px 61px -4px rgba(0, 0, 0, 0.75); }
+    .work-page section#post-content p.main img:hover {
+      opacity: 1; }
 
 /*# sourceMappingURL=maps/main.css.map */
