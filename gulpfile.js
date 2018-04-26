@@ -6,16 +6,11 @@ const sass          = require('gulp-sass');
 const sourcemaps    = require('gulp-sourcemaps');
 const autoprefixer  = require('gulp-autoprefixer');
 const imagemin      = require('gulp-imagemin');
-const useref        = require('gulp-useref');
-const gulpif        = require('gulp-if');
 const uglify        = require('gulp-uglify');
 const babel         = require('gulp-babel');
-const uncss         = require('gulp-uncss');
 const browserSync   = require('browser-sync').create();
-const concatVendor  = require('gulp-concat-vendor');
 const plumber       = require('gulp-plumber');
 const concat        = require('gulp-concat');
-const insert        = require('gulp-insert');
 
 gulp.task('sass', () => {
     return gulp.src('src/sass/**/*.scss')
@@ -39,6 +34,7 @@ gulp.task('js', () => {
     return gulp.src(
         [
             'src/js/layouts/*.js',
+            'src/js/sketches.js',
             'src/js/_pages/**/*.js',
             'src/js/theme.js'
         ])
@@ -94,7 +90,7 @@ gulp.task('serve', ()=>{
 gulp.task('watch', ['serve', 'sass'], ()=>{
     gulp.watch('src/sass/**/*.scss', ['sass']);
     gulp.watch('src/**/*.html', ['html']);
-    gulp.watch(['src/js/theme.js' ,'src/js/layouts/*.js', 'src/js/_pages/**/*.js'], ['js']);
+    gulp.watch(['src/js/theme.js', 'src/js/sketches.js', 'src/js/layouts/*.js', 'src/js/_pages/**/*.js'], ['js']);
     gulp.watch('src/js/vendors/*.js', ['vendors']);
 });
 

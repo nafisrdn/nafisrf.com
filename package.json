@@ -18,15 +18,11 @@
     "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-concat-vendor": "0.0.4",
-    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
-    "gulp-insert": "^0.5.0",
     "gulp-plumber": "^1.2.0",
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.0",
-    "gulp-uncss": "^1.0.6",
-    "gulp-useref": "^3.1.5"
+    "gulp-uglify": "^3.0.0"
   },
   "dependencies": {
     "time-require": "^0.1.2"
