@@ -365,6 +365,7 @@ h2 {
   font-size: 5.5rem; }
 
 p {
+  font-size: 1.3rem;
   line-height: 1.5rem; }
 
 ul {
@@ -390,7 +391,9 @@ ul {
 
 .wrapper {
   max-width: 90%;
-  margin: 0 auto; }
+  width: 1200px;
+  margin: 0 auto;
+  position: relative; }
 
 section {
   position: relative; }
@@ -818,5 +821,17 @@ section#contact {
     @media (max-width: 768px) {
       section#contact .flex .email a {
         font-size: 2rem; } }
+
+section#first {
+  background: #31353D;
+  padding: 100px 0; }
+  section#first h3 {
+    color: #92CDCF;
+    font-size: 4rem;
+    position: absolute;
+    right: 0%;
+    bottom: 0%; }
+  section#first img {
+    width: 80%; }
 
 /*# sourceMappingURL=maps/main.css.map */

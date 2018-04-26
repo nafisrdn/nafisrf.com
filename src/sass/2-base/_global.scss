@@ -52,6 +52,7 @@ h2{
 }
 
 p{
+    font-size: 1.3rem;
     line-height: 1.5rem;
 }
 
@@ -89,7 +90,9 @@ ul{
 
 .wrapper{
     max-width: 90%;
+    width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
 section{

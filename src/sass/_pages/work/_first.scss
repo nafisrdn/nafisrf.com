@@ -1,0 +1,18 @@
+section#first{
+    // height: 100vh;
+    // background: $dark;
+    background: $dark;
+    padding: 100px 0;
+
+    h3{
+        color: $aqua;
+        font-size: 4rem;
+        position: absolute;
+        right: 0%;
+        bottom: 0%;
+    }
+
+    img{
+        width: 80%;
+    }
+}
