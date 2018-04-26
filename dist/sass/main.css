@@ -671,7 +671,9 @@ section#work {
     section#work .work-outer .work-group {
       width: 100%;
       display: inline-block;
-      position: relative; }
+      position: relative;
+      -webkit-transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s all;
+      transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s all; }
       section#work .work-outer .work-group article {
         position: relative; }
         section#work .work-outer .work-group article .work-title {
