@@ -592,7 +592,8 @@ section#about {
       section#about .content .my-desc h1 {
         text-align: center;
         color: #FFFFFF;
-        margin-bottom: 0.3em; }
+        margin-bottom: 0.3em;
+        font-size: 3.5rem; }
       section#about .content .my-desc p {
         color: #92CDCF; }
       section#about .content .my-desc .contact-btn {
