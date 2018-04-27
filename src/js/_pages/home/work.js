@@ -23,6 +23,10 @@ for (let i = 0; i < groupLength; i++) {
 
     workPaginator.css('top', `-${(workSection.height() / 2) - 70}px`);
 
+    $(window).resize(function(){
+        workPaginator.css('top', `-${(workSection.height() / 2) - 70}px`);
+    })
+
     updatePaginatorNumbers(1);  
 
     $('.work-paginator ul li').click(function () {

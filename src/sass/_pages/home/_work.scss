@@ -96,7 +96,7 @@ section#work{
                 }
             }
 
-            @media (max-width: 1200px){
+            @media (max-width: $desktop){
                 article{
                     .work-title{
                         position: relative;
