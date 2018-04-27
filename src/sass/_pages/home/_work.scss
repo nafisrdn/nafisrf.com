@@ -120,13 +120,15 @@ section#work{
 
 
 
+    .work-paginator > *{
+        // display: inline;
+        // float: left;
+    }
 
     .work-paginator{
 
         display: flex;
-        justify-content: space-between;
         position: relative;
-        // margin-top: 1.5em + 3em;
 
         &::after{
             content: '';
@@ -142,12 +144,20 @@ section#work{
         [class^="icon-"], [class*=" icon-"]{
             font-size: 3.9rem;
             cursor: pointer;
+            position: relative;
+        }
+
+        .icon-arrow-left{
+            float: left;
+        }
+
+        .icon-arrow-right{
+            float: right;
         }
 
         ul{
-            display: flex;
-            justify-content: center;
-            text-decoration: none;
+            margin: 0 auto;
+            margin-top: -0.7em;
             
             li.selected{
                 a{
@@ -158,8 +168,8 @@ section#work{
 
             li{
 
-                margin: 0 100%;
-                margin-top: -0.7em;
+                display: inline;
+                margin: 0 2em;
 
                 a{
                     font-size: 2rem;

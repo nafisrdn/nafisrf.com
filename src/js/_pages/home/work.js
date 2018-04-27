@@ -21,7 +21,6 @@ for (let i = 0; i < groupLength; i++) {
     `);
 }
 
-$(document).ready(function() {
     workPaginator.css('top', `-${(workSection.height() / 2) - 70}px`);
 
     updatePaginatorNumbers(1);  
@@ -112,5 +111,4 @@ $(document).ready(function() {
         num.addClass('selected');
     }
 
-});
 

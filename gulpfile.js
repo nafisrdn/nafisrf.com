@@ -11,6 +11,7 @@ const babel         = require('gulp-babel');
 const browserSync   = require('browser-sync').create();
 const plumber       = require('gulp-plumber');
 const concat        = require('gulp-concat');
+const injectString  = require('gulp-inject-string');
 
 gulp.task('sass', () => {
     return gulp.src('src/sass/**/*.scss')
@@ -44,7 +45,9 @@ gulp.task('js', () => {
         .pipe(babel({
             presets: ['env']
         }))
-        .pipe(uglify())
+        .pipe(injectString.after("use strict';", '$(document).ready(function(){'))
+        .pipe(injectString.append('});'))
+        // .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.stream());

@@ -730,9 +730,6 @@ section#work {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
     position: relative; }
     section#work .work-paginator::after {
       content: '';
@@ -745,21 +742,21 @@ section#work {
       top: 47%; }
     section#work .work-paginator [class^="icon-"], section#work .work-paginator [class*=" icon-"] {
       font-size: 3.9rem;
-      cursor: pointer; }
+      cursor: pointer;
+      position: relative; }
+    section#work .work-paginator .icon-arrow-left {
+      float: left; }
+    section#work .work-paginator .icon-arrow-right {
+      float: right; }
     section#work .work-paginator ul {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
-      text-decoration: none; }
+      margin: 0 auto;
+      margin-top: -0.7em; }
       section#work .work-paginator ul li.selected a {
         color: #92CDCF;
         text-decoration: underline; }
       section#work .work-paginator ul li {
-        margin: 0 100%;
-        margin-top: -0.7em; }
+        display: inline;
+        margin: 0 2em; }
         section#work .work-paginator ul li a {
           font-size: 2rem;
           color: #0062ff; }
