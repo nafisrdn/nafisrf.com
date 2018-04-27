@@ -723,7 +723,7 @@ section#work {
         top: 20px; }
       section#work .work-outer .work-group .article-right img {
         float: right; }
-      @media (max-width: 768px) {
+      @media (max-width: 1200px) {
         section#work .work-outer .work-group article .work-title {
           position: relative;
           top: 0 !important;
