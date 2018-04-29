@@ -96,7 +96,7 @@ section#work{
                 }
             }
 
-            @media (max-width: $desktop){
+            @media (max-width: $breakpoint-desktop){
                 article{
                     .work-title{
                         position: relative;

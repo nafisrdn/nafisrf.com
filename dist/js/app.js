@@ -63,7 +63,9 @@ function navShow(b) {
         navToggle.classList.remove('is-open');
     }
 }
-var noiseSketch = function noiseSketch(section, img) {
+var NoiseSketch = function NoiseSketch(section) {
+    var img = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
 
     this.img = img;
     this.section = section;
@@ -74,24 +76,30 @@ var noiseSketch = function noiseSketch(section, img) {
         var section = clsp.section;
         var noiseScale = 0.02;
         var fps = void 0;
+        var img = clsp.img;
         var bgImg = void 0;
 
-        console.log(section.width());
-
         p.preload = function () {
-            bgImg = p.loadImage(clsp.img);
+            if (img != null) {
+                bgImg = p.loadImage(img);
+            }
         };
 
         p.setup = function () {
-            p.createCanvas(section.width(), section.height());
-            bgImg.loadPixels();
+
+            p.createCanvas(section.width(), section.outerHeight());
+            if (img != null) {
+                bgImg.loadPixels();
+            }
             p.noLoop();
         };
 
         p.draw = function () {
             p.background(13, 18, 24);
 
-            p.image(bgImg, 0, 0, section.width(), section.height());
+            if (img != null) {
+                p.image(bgImg, 0, 0, section.width(), section.outerHeight());
+            }
 
             p.stroke(255);
 
@@ -102,16 +110,398 @@ var noiseSketch = function noiseSketch(section, img) {
         };
 
         p.windowResized = function () {
-            p.resizeCanvas(section.width(), section.height());
+            p.resizeCanvas(section.width(), section.outerHeight());
         };
     };
 };
 
-var aboutSection = $('#about');
+var BubbleAndNum = function BubbleAndNum(section) {
+    var val = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+    var img = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
-var showAboutSketch = new noiseSketch(aboutSection, '/img/particles.jpg').sketch;
 
-var showAboutSketch2 = new p5(showAboutSketch, 'about');
+    this.section = section;
+    this.val = val;
+    this.img = img;
+
+    // console.log(img);
+
+
+    this.sketch = function (p) {
+        var bgimg = void 0;
+
+        var rightWall = {
+            pos: {
+                x: section.outerWidth() / 2,
+                y: 0
+            },
+            size: {
+                width: section.outerWidth() / 2
+            }
+
+        };
+
+        var circles = [];
+        var numbers = [];
+
+        var objAmount = val;
+        var objSize = void 0;
+
+        var circleMouse = void 0;
+
+        p.setup = function () {
+
+            p.createCanvas(section.outerWidth(), section.outerHeight());
+
+            p.background(255);
+
+            circleMouse = new Circle(0, 0, 50);
+
+            if (img != null) {
+                if (window.innerWidth <= 480) {
+                    bgimg = new BrainImg(img, 0, 0, 200, 170);
+                } else {
+                    bgimg = new BrainImg(img, 0, 0, 500, 430);
+                }
+            }
+
+            if (screen.width <= 480) {
+                // objAmount = 4;
+                objSize = 30;
+            } else {
+                // objAmount = 4;
+                objSize = 50;
+            }
+
+            // Circles
+            for (var i = 0; i < objAmount; i++) {
+
+                var x = p.random(rightWall.pos.x, rightWall.pos.x * 2 - 50);
+                var y = p.random(0, section.outerHeight());
+
+                var speedX = p.random(-1.5, 1.5);
+                var speedY = p.random(-1.5, 1.5);
+
+                if (speedX == 0) {
+                    speedX = 1;
+                }
+
+                if (speedY == 0) {
+                    speedY = 1;
+                }
+
+                circles[i] = new Circle(x, y, objSize, speedX, speedY);
+            }
+
+            // Numbers
+            for (var _i2 = 0; _i2 < objAmount; _i2++) {
+                var _x4 = p.random(0, rightWall.pos.x - 50);
+                var _y = p.random(0, section.outerHeight());
+
+                var _speedX = p.random(-1.5, 1.5);
+                var _speedY = p.random(-1.5, 1.5);
+
+                if (_speedX == 0) {
+                    _speedX = 1;
+                }
+
+                if (_speedY == 0) {
+                    _speedY = 1;
+                }
+
+                numbers[_i2] = new Text(_i2, _x4, _y, objSize, _speedX, _speedY);
+            }
+
+            p.frameRate(60);
+        };
+
+        p.draw = function () {
+
+            p.background(255);
+
+            if (img != null) {
+                bgimg.update();
+                bgimg.draw();
+            }
+
+            // console.log(img);
+
+
+            p.strokeWeight(4);
+            p.stroke(156, 205, 207);
+
+            // circleMouse.draw();
+
+            // Numbers
+            for (var i = 0; i < numbers.length; i++) {
+                var number = numbers[i];
+
+                number.update();
+                number.draw();
+
+                // p.fill(0, 255,0);
+                // p.ellipse(number.x, number.y, 5, 5);
+            }
+
+            // Circles
+            for (var _i3 = 0; _i3 < circles.length; _i3++) {
+
+                var overlapping = false;
+
+                circles[_i3].noFill();
+
+                circles[_i3].update();
+                circles[_i3].draw();
+
+                for (var other = 0; other < circles.length; other++) {
+                    if (_i3 != other && circles[_i3].intersectCircle(circles[other])) {
+                        overlapping = true;
+                    }
+                }
+
+                if (overlapping) {
+                    circles[_i3].stroke([0, 98, 255]);
+                } else {
+                    circles[_i3].stroke([156, 205, 207]);
+                }
+            }
+        };
+
+        p.windowResized = function () {
+
+            if (window.innerWidth <= 480) {
+                objAmount = 5;
+            } else {
+                objAmount = 10;
+            }
+
+            rightWall = {
+                pos: {
+                    x: section.outerWidth() / 2,
+                    y: 0
+                },
+                size: {
+                    width: section.outerWidth() / 2
+                }
+
+            };
+
+            if (window.innerWidth <= 480) {
+                bgimg.width = 200;
+                bgimg.height = 170;
+            } else {
+                bgimg.width = 500;
+                bgimg.height = 430;
+            }
+
+            if (window.innerWidth >= 1200) {
+                bgimg.width = 700;
+                bgimg.height = 630;
+            }
+
+            p.resizeCanvas(section.outerWidth(), section.outerHeight());
+        };
+
+        var Text = function () {
+            function Text(text, x, y, size) {
+                var speedX = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2;
+                var speedY = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 2;
+
+                _classCallCheck(this, Text);
+
+                this.text = text;
+
+                this.x = x + 50;
+                this.y = y + 50;
+
+                this.size = size;
+
+                this.speedX = speedX;
+                this.speedY = speedY;
+
+                this.fillColor = [156, 205, 207];
+            }
+
+            _createClass(Text, [{
+                key: 'draw',
+                value: function draw() {
+                    p.noStroke();
+
+                    p.fill(this.fillColor);
+                    p.textSize(this.size);
+                    p.text(this.text, this.x, this.y);
+                }
+            }, {
+                key: 'update',
+                value: function update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    this.intersectWall();
+                }
+            }, {
+                key: 'intersectWall',
+                value: function intersectWall() {
+                    if (this.x >= rightWall.pos.x - this.size / 2) {
+                        this.x = rightWall.pos.x - this.size / 2;
+                        this.speedX *= -1;
+                    }
+
+                    if (this.x <= 0) {
+                        this.x = 0;
+                        this.speedX *= -1;
+
+                        // this.fillColor = [255, 0, 0];
+                    }
+
+                    if (this.y >= p.height) {
+                        this.y = p.height;
+                        this.speedY *= -1;
+                    }
+
+                    if (this.y - this.size <= 0) {
+                        this.y = this.size;
+                        this.speedY *= -1;
+                    }
+                }
+            }]);
+
+            return Text;
+        }();
+
+        var Circle = function () {
+            function Circle(x, y, size) {
+                var speedX = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2;
+                var speedY = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2;
+
+                _classCallCheck(this, Circle);
+
+                this.x = x + 50;
+                this.y = y + 50;
+
+                this.size = size;
+
+                this.speedX = speedX;
+                this.speedY = speedY;
+
+                this.fillColor = 0;
+                this.strokeColor = 0;
+            }
+
+            _createClass(Circle, [{
+                key: 'draw',
+                value: function draw() {
+                    p.stroke(this.strokeColor);
+                    if (this.noFill) {
+                        p.noFill();
+                    } else {
+                        p.fill(this.fillColor);
+                    }
+
+                    p.ellipse(this.x, this.y, this.size, this.size);
+                }
+            }, {
+                key: 'update',
+                value: function update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    this.intersectWall();
+                }
+            }, {
+                key: 'noFill',
+                value: function noFill(b) {
+                    return b;
+                }
+            }, {
+                key: 'fill',
+                value: function fill(color) {
+                    this.fillColor = color;
+                }
+            }, {
+                key: 'stroke',
+                value: function stroke(color) {
+                    this.strokeColor = color;
+                }
+            }, {
+                key: 'intersectCircle',
+                value: function intersectCircle(other) {
+                    var d = p.dist(this.x, this.y, other.x, other.y);
+                    var fd = this.size / 2 + other.size / 2;
+
+                    return d < fd;
+                }
+            }, {
+                key: 'intersectWall',
+                value: function intersectWall() {
+                    if (this.x >= p.width - this.size / 2) {
+                        this.x = p.width - this.size / 2;
+                        this.speedX = this.speedX * -1;
+                    }
+
+                    if (this.x <= rightWall.pos.x + this.size / 2) {
+                        this.x = rightWall.pos.x + this.size / 2;
+                        this.speedX = this.speedX * -1;
+                    }
+
+                    if (this.y >= p.height - this.size / 2) {
+                        this.y = p.height - this.size / 2;
+                        this.speedY = this.speedY * -1;
+                    }
+
+                    if (this.y <= this.size / 2) {
+                        this.y = this.size / 2;
+                        this.speedY = this.speedY * -1;
+                    }
+                }
+            }]);
+
+            return Circle;
+        }();
+
+        var BrainImg = function () {
+            function BrainImg(img, x, y, width, height) {
+                _classCallCheck(this, BrainImg);
+
+                this.img = p.loadImage(img);
+
+                this.x = x;
+                this.y = y;
+
+                this.width = width;
+                this.height = height;
+            }
+
+            _createClass(BrainImg, [{
+                key: 'draw',
+                value: function draw() {
+                    p.image(this.img, this.x, this.y, this.width, this.height);
+                    // console.log(this.img);
+                }
+            }, {
+                key: 'update',
+                value: function update() {
+                    this.x = p.width / 2 - this.width / 2;
+                    this.y = p.height / 2 - this.height / 2;
+                }
+            }, {
+                key: 'followY',
+                value: function followY(targetY, speedY) {
+                    if (this.y < targetY) {
+                        this.y += speedY;
+                    }
+
+                    if (this.y > targetY) {
+                        this.y -= speedY;
+                    }
+                }
+            }]);
+
+            return BrainImg;
+        }();
+    };
+};
+
 var sectionWork = document.querySelector('section#work');
 var workArticles = document.querySelectorAll('section#work article');
 
@@ -131,384 +521,22 @@ var workArticles = document.querySelectorAll('section#work article');
 
 // }
 
+// work sketch
 
-var skillSection = {
-    e: document.getElementById('skill'),
-    id: 'skill',
-    size: {
-        width: document.getElementById('skill').offsetWidth,
-        height: document.getElementById('skill').offsetHeight
-    }
-};
+var aboutSection = $('section#about');
+var skillSection = $('section#skill');
 
-var skillSketch = function skillSketch(p) {
+if (aboutSection.length) {
+    var showAboutSketch = new NoiseSketch(aboutSection, '/img/particles.jpg').sketch;
 
-    var brain = void 0;
+    var showAboutSketch2 = new p5(showAboutSketch, 'about');
+}
 
-    var rightWall = {
-        pos: {
-            x: skillSection.e.offsetWidth / 2,
-            y: 0
-        },
-        size: {
-            width: skillSection.e.offsetWidth / 2
-        }
+if (skillSection.length) {
+    var test = new BubbleAndNum(skillSection, 7, '/img/white-brain.jpg');
 
-    };
-
-    var circles = [];
-    var numbers = [];
-
-    var objAmount = void 0;
-    var objSize = void 0;
-
-    var circleMouse = void 0;
-
-    p.setup = function () {
-
-        p.createCanvas(skillSection.e.offsetWidth, skillSection.e.offsetHeight);
-
-        p.background(255);
-
-        circleMouse = new Circle(0, 0, 50);
-
-        if (window.innerWidth <= 480) {
-            brain = new BrainImg(p.loadImage('/img/white-brain.jpg'), 0, 0, 200, 170);
-        } else {
-            brain = new BrainImg(p.loadImage('/img/white-brain.jpg'), 0, 0, 500, 430);
-        }
-
-        if (screen.width <= 480) {
-            objAmount = 4;
-            objSize = 30;
-        } else {
-            objAmount = 4;
-            objSize = 50;
-        }
-
-        // Circles
-        for (var i = 0; i < objAmount; i++) {
-
-            var x = p.random(rightWall.pos.x, rightWall.pos.x * 2 - 50);
-            var y = p.random(0, skillSection.e.offsetHeight);
-
-            var speedX = p.random(-1.5, 1.5);
-            var speedY = p.random(-1.5, 1.5);
-
-            if (speedX == 0) {
-                speedX = 1;
-            }
-
-            if (speedY == 0) {
-                speedY = 1;
-            }
-
-            circles[i] = new Circle(x, y, objSize, speedX, speedY);
-        }
-
-        // Numbers
-        for (var _i2 = 0; _i2 < objAmount; _i2++) {
-            var _x = p.random(0, rightWall.pos.x - 50);
-            var _y = p.random(0, skillSection.e.offsetHeight);
-
-            var _speedX = p.random(-1.5, 1.5);
-            var _speedY = p.random(-1.5, 1.5);
-
-            if (_speedX == 0) {
-                _speedX = 1;
-            }
-
-            if (_speedY == 0) {
-                _speedY = 1;
-            }
-
-            numbers[_i2] = new Text(_i2, _x, _y, objSize, _speedX, _speedY);
-        }
-
-        p.frameRate(60);
-    };
-
-    p.draw = function () {
-
-        p.background(255);
-
-        brain.update();
-        brain.draw();
-
-        p.strokeWeight(4);
-        p.stroke(156, 205, 207);
-
-        // circleMouse.draw();
-
-        // Numbers
-        for (var i = 0; i < numbers.length; i++) {
-            var number = numbers[i];
-
-            number.update();
-            number.draw();
-
-            // p.fill(0, 255,0);
-            // p.ellipse(number.x, number.y, 5, 5);
-        }
-
-        // Circles
-        for (var _i3 = 0; _i3 < circles.length; _i3++) {
-
-            var overlapping = false;
-
-            circles[_i3].noFill();
-
-            circles[_i3].update();
-            circles[_i3].draw();
-
-            for (var other = 0; other < circles.length; other++) {
-                if (_i3 != other && circles[_i3].intersectCircle(circles[other])) {
-                    overlapping = true;
-                }
-            }
-
-            if (overlapping) {
-                circles[_i3].stroke([0, 98, 255]);
-            } else {
-                circles[_i3].stroke([156, 205, 207]);
-            }
-        }
-    };
-
-    p.windowResized = function () {
-
-        if (window.innerWidth <= 480) {
-            objAmount = 5;
-        } else {
-            objAmount = 10;
-        }
-
-        rightWall = {
-            pos: {
-                x: skillSection.e.offsetWidth / 2,
-                y: 0
-            },
-            size: {
-                width: skillSection.e.offsetWidth / 2
-            }
-
-        };
-
-        if (window.innerWidth <= 480) {
-            brain.width = 200;
-            brain.height = 170;
-        } else {
-            brain.width = 500;
-            brain.height = 430;
-        }
-
-        if (window.innerWidth >= 1200) {
-            brain.width = 700;
-            brain.height = 630;
-        }
-
-        p.resizeCanvas(skillSection.e.offsetWidth, skillSection.e.offsetHeight);
-    };
-
-    var Text = function () {
-        function Text(text, x, y, size) {
-            var speedX = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2;
-            var speedY = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 2;
-
-            _classCallCheck(this, Text);
-
-            this.text = text;
-
-            this.x = x + 50;
-            this.y = y + 50;
-
-            this.size = size;
-
-            this.speedX = speedX;
-            this.speedY = speedY;
-
-            this.fillColor = [156, 205, 207];
-        }
-
-        _createClass(Text, [{
-            key: 'draw',
-            value: function draw() {
-                p.noStroke();
-
-                p.fill(this.fillColor);
-                p.textSize(this.size);
-                p.text(this.text, this.x, this.y);
-            }
-        }, {
-            key: 'update',
-            value: function update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                this.intersectWall();
-            }
-        }, {
-            key: 'intersectWall',
-            value: function intersectWall() {
-                if (this.x >= rightWall.pos.x - this.size / 2) {
-                    this.x = rightWall.pos.x - this.size / 2;
-                    this.speedX *= -1;
-                }
-
-                if (this.x <= 0) {
-                    this.x = 0;
-                    this.speedX *= -1;
-
-                    // this.fillColor = [255, 0, 0];
-                }
-
-                if (this.y >= p.height) {
-                    this.y = p.height;
-                    this.speedY *= -1;
-                }
-
-                if (this.y - this.size <= 0) {
-                    this.y = this.size;
-                    this.speedY *= -1;
-                }
-            }
-        }]);
-
-        return Text;
-    }();
-
-    var Circle = function () {
-        function Circle(x, y, size) {
-            var speedX = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2;
-            var speedY = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2;
-
-            _classCallCheck(this, Circle);
-
-            this.x = x + 50;
-            this.y = y + 50;
-
-            this.size = size;
-
-            this.speedX = speedX;
-            this.speedY = speedY;
-
-            this.fillColor = 0;
-            this.strokeColor = 0;
-        }
-
-        _createClass(Circle, [{
-            key: 'draw',
-            value: function draw() {
-                p.stroke(this.strokeColor);
-                if (this.noFill) {
-                    p.noFill();
-                } else {
-                    p.fill(this.fillColor);
-                }
-
-                p.ellipse(this.x, this.y, this.size, this.size);
-            }
-        }, {
-            key: 'update',
-            value: function update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                this.intersectWall();
-            }
-        }, {
-            key: 'noFill',
-            value: function noFill(b) {
-                return b;
-            }
-        }, {
-            key: 'fill',
-            value: function fill(color) {
-                this.fillColor = color;
-            }
-        }, {
-            key: 'stroke',
-            value: function stroke(color) {
-                this.strokeColor = color;
-            }
-        }, {
-            key: 'intersectCircle',
-            value: function intersectCircle(other) {
-                var d = p.dist(this.x, this.y, other.x, other.y);
-                var fd = this.size / 2 + other.size / 2;
-
-                return d < fd;
-            }
-        }, {
-            key: 'intersectWall',
-            value: function intersectWall() {
-                if (this.x >= p.width - this.size / 2) {
-                    this.x = p.width - this.size / 2;
-                    this.speedX = this.speedX * -1;
-                }
-
-                if (this.x <= rightWall.pos.x + this.size / 2) {
-                    this.x = rightWall.pos.x + this.size / 2;
-                    this.speedX = this.speedX * -1;
-                }
-
-                if (this.y >= p.height - this.size / 2) {
-                    this.y = p.height - this.size / 2;
-                    this.speedY = this.speedY * -1;
-                }
-
-                if (this.y <= this.size / 2) {
-                    this.y = this.size / 2;
-                    this.speedY = this.speedY * -1;
-                }
-            }
-        }]);
-
-        return Circle;
-    }();
-
-    var BrainImg = function () {
-        function BrainImg(img, x, y, width, height) {
-            _classCallCheck(this, BrainImg);
-
-            this.img = img;
-
-            this.x = x;
-            this.y = y;
-
-            this.width = width;
-            this.height = height;
-        }
-
-        _createClass(BrainImg, [{
-            key: 'draw',
-            value: function draw() {
-                p.image(this.img, this.x, this.y, this.width, this.height);
-            }
-        }, {
-            key: 'update',
-            value: function update() {
-                this.x = p.width / 2 - this.width / 2;
-                this.y = p.height / 2 - this.height / 2;
-            }
-        }, {
-            key: 'followY',
-            value: function followY(targetY, speedY) {
-                if (this.y < targetY) {
-                    this.y += speedY;
-                }
-
-                if (this.y > targetY) {
-                    this.y -= speedY;
-                }
-            }
-        }]);
-
-        return BrainImg;
-    }();
-};
-
-var showSkillSketch = new p5(skillSketch, skillSection.id);
+    var skillSectionSketch2 = new p5(test.sketch, 'skill');
+}
 
 var workSection = $('section#work');
 var workWrapper = $('.work-wrapper');
@@ -608,6 +636,23 @@ function updatePaginatorNumbers(i) {
     $('.work-paginator ul li').removeClass('selected');
 
     num.addClass('selected');
+}
+
+// work sketch
+
+var firstSectionWork = $('section#first');
+var postContentSection = $('section#post-content');
+
+if (firstSectionWork.length) {
+    var showFirstSketch = new NoiseSketch(firstSectionWork, '/img/particles.jpg').sketch;
+
+    var showFirstSketch2 = new p5(showFirstSketch, 'first');
+}
+
+if (postContentSection.length) {
+    var _test = new BubbleAndNum(postContentSection, 20);
+
+    var showPostSketch2 = new p5(_test.sketch, 'post-content');
 }
 
 $('a[href*="#"]')

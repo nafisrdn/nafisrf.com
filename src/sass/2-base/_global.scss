@@ -86,8 +86,6 @@ ul{
     display: block !important;
 }
 
-
-
 .wrapper{
     margin-right: auto; /* 1 */
     margin-left:  auto; /* 1 */
@@ -98,8 +96,21 @@ ul{
     padding-left:  10px; /* 3 */
     position: relative;
 }
+
+// .wrapper{
+//     max-width: 100%;
+//     width: 1200px;
+//     margin: 0 auto;
+//     position: relative;
+// }
+
+// @media (max-width: $breakpoint-mobile){
+//     max-width: 90%;
+// }
+
 section{
     position: relative;
+    z-index: 1;
 
     &::after{
         clear: both;

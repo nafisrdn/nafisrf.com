@@ -403,7 +403,8 @@ ul {
   position: relative; }
 
 section {
-  position: relative; }
+  position: relative;
+  z-index: 1; }
   section::after {
     clear: both;
     content: "";
@@ -848,7 +849,6 @@ section#contact {
         font-size: 2rem; } }
 
 .work-page section#first {
-  background: #1C1D21;
   padding: 100px 0; }
   .work-page section#first h3 {
     color: #92CDCF;
