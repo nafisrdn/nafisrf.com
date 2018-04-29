@@ -14,7 +14,7 @@ if (firstSectionWork.length) {
 
 if (postContentSection.length && $(window).width() > 960) {
 
-    let objTotal = 20;
+    let objTotal = 10;
 
     let test = new BubbleAndNum(postContentSection, objTotal);
     

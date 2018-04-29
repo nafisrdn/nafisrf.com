@@ -217,11 +217,10 @@ var BubbleAndNum = function BubbleAndNum(section) {
 
             p.background(255);
 
-            // if (img != null) {
-            //     bgimg.update();
-            //     bgimg.draw();
-            // }
-
+            if (img != null) {
+                bgimg.update();
+                bgimg.draw();
+            }
 
             p.strokeWeight(4);
             p.stroke(156, 205, 207);
@@ -654,7 +653,7 @@ if (firstSectionWork.length) {
 
 if (postContentSection.length && $(window).width() > 960) {
 
-    var _objTotal = 20;
+    var _objTotal = 10;
 
     var _test = new BubbleAndNum(postContentSection, _objTotal);
 

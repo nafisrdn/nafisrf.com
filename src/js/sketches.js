@@ -166,10 +166,10 @@ var BubbleAndNum = function (section, val = 10, img = null) {
 
             p.background(255);
 
-            // if (img != null) {
-            //     bgimg.update();
-            //     bgimg.draw();
-            // }
+            if (img != null) {
+                bgimg.update();
+                bgimg.draw();
+            }
             
             
 
