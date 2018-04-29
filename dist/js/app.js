@@ -166,10 +166,8 @@ var BubbleAndNum = function BubbleAndNum(section) {
             }
 
             if (screen.width <= 480) {
-                // objAmount = 4;
                 objSize = 30;
             } else {
-                // objAmount = 4;
                 objSize = 50;
             }
 
@@ -219,18 +217,14 @@ var BubbleAndNum = function BubbleAndNum(section) {
 
             p.background(255);
 
-            if (img != null) {
-                bgimg.update();
-                bgimg.draw();
-            }
-
-            // console.log(img);
+            // if (img != null) {
+            //     bgimg.update();
+            //     bgimg.draw();
+            // }
 
 
             p.strokeWeight(4);
             p.stroke(156, 205, 207);
-
-            // circleMouse.draw();
 
             // Numbers
             for (var i = 0; i < numbers.length; i++) {
@@ -658,13 +652,9 @@ if (firstSectionWork.length) {
     var showFirstSketch2 = new p5(showFirstSketch, 'first');
 }
 
-if (postContentSection.length) {
+if (postContentSection.length && $(window).width() > 960) {
 
     var _objTotal = 20;
-
-    if ($(window).width() < 960) {
-        _objTotal = 10;
-    }
 
     var _test = new BubbleAndNum(postContentSection, _objTotal);
 

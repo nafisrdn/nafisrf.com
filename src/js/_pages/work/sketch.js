@@ -12,13 +12,9 @@ if (firstSectionWork.length) {
     let showFirstSketch2 = new p5(showFirstSketch, 'first');
 }
 
-if (postContentSection.length) {
+if (postContentSection.length && $(window).width() > 960) {
 
     let objTotal = 20;
-
-    if ($(window).width() < 960) {
-        objTotal = 10;
-    }
 
     let test = new BubbleAndNum(postContentSection, objTotal);
     

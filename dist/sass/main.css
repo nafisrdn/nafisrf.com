@@ -883,7 +883,6 @@ section#contact {
         content: "- "; }
   .work-page section#post-content p.main img {
     margin: 50px auto;
-    opacity: .89;
     -webkit-transition: .7s all;
     transition: .7s all;
     cursor: pointer;

@@ -115,10 +115,8 @@ var BubbleAndNum = function (section, val = 10, img = null) {
             }
 
             if (screen.width <= 480) {
-                // objAmount = 4;
                 objSize = 30;
             } else {
-                // objAmount = 4;
                 objSize = 50;
             }
 
@@ -168,12 +166,10 @@ var BubbleAndNum = function (section, val = 10, img = null) {
 
             p.background(255);
 
-            if (img != null) {
-                bgimg.update();
-                bgimg.draw();
-            }
-
-            // console.log(img);
+            // if (img != null) {
+            //     bgimg.update();
+            //     bgimg.draw();
+            // }
             
             
 
@@ -181,8 +177,6 @@ var BubbleAndNum = function (section, val = 10, img = null) {
 
             p.strokeWeight(4);
             p.stroke(156, 205, 207);
-
-            // circleMouse.draw();
 
             // Numbers
             for (let i = 0; i < numbers.length; i++) {
