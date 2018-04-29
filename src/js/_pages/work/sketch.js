@@ -13,7 +13,14 @@ if (firstSectionWork.length) {
 }
 
 if (postContentSection.length) {
-    let test = new BubbleAndNum(postContentSection, 20);
+
+    let objTotal = 20;
+
+    if ($(window).width() < 960) {
+        objTotal = 10;
+    }
+
+    let test = new BubbleAndNum(postContentSection, objTotal);
     
     let showPostSketch2 = new p5(test.sketch, 'post-content');
 }

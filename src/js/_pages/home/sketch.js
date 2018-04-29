@@ -11,6 +11,14 @@ if (aboutSection.length) {
 
 
 if (skillSection.length) {
+
+    let objTotal = 7;
+
+    if($(window).width() < 960){
+        objTotal = 4;
+        
+    }
+
     let test = new BubbleAndNum(skillSection, 7, '/img/white-brain.jpg');
 
     let skillSectionSketch2 = new p5(test.sketch, 'skill');

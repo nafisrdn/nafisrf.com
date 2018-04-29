@@ -59,6 +59,7 @@ var NoiseSketch = function(section, img=null) {
 
         p.windowResized = () => {
             p.resizeCanvas(section.width(), section.outerHeight());
+            
         }
     }
 }
@@ -225,10 +226,11 @@ var BubbleAndNum = function (section, val = 10, img = null) {
 
             if (window.innerWidth <= 480) {
                 objAmount = 5;
+                objSize = 30;
             } else {
                 objAmount = 10;
+                objSize = 50;
             }
-
 
             rightWall = {
                 pos: {
@@ -242,16 +244,16 @@ var BubbleAndNum = function (section, val = 10, img = null) {
             };
 
             if (window.innerWidth <= 480) {
-                bgimg.width = 200;
-                bgimg.height = 170;
+                BrainImg.width = 200;
+                BrainImg.height = 170;
             } else {
-                bgimg.width = 500;
-                bgimg.height = 430;
+                BrainImg.width = 500;
+                BrainImg.height = 430;
             }
 
             if (window.innerWidth >= 1200) {
-                bgimg.width = 700;
-                bgimg.height = 630;
+                BrainImg.width = 700;
+                BrainImg.height = 630;
             }
 
             p.resizeCanvas(section.outerWidth(), section.outerHeight());
