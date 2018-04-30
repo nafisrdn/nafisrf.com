@@ -45,6 +45,7 @@ section#work{
 
         .work-group{
 
+            left:0;
             width: 100%;
             display: inline-block;
             position: relative;
@@ -158,6 +159,7 @@ section#work{
         ul{
             margin: 0 auto;
             margin-top: -0.7em;
+                user-select: none;
             
             li.selected{
                 a{
@@ -174,6 +176,7 @@ section#work{
                 a{
                     font-size: 2rem;
                     color: $blue;
+                    cursor: pointer;
 
                     &:hover {
                         color: $aqua;

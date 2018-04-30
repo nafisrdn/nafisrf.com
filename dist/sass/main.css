@@ -698,6 +698,7 @@ section#work {
       max-width: 100%;
       margin: auto; }
     section#work .work-outer .work-group {
+      left: 0;
       width: 100%;
       display: inline-block;
       position: relative;
@@ -758,7 +759,11 @@ section#work {
       float: right; }
     section#work .work-paginator ul {
       margin: 0 auto;
-      margin-top: -0.7em; }
+      margin-top: -0.7em;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
       section#work .work-paginator ul li.selected a {
         color: #92CDCF;
         text-decoration: underline; }
@@ -767,7 +772,8 @@ section#work {
         margin: 0 2em; }
         section#work .work-paginator ul li a {
           font-size: 2rem;
-          color: #0062ff; }
+          color: #0062ff;
+          cursor: pointer; }
           section#work .work-paginator ul li a:hover {
             color: #92CDCF;
             text-decoration: underline; }

@@ -552,7 +552,7 @@ var endIndex = group.length / visible - 1;
 var active = true;
 
 for (var i = 0; i < groupLength; i++) {
-    $('.work-paginator ul').append('\n    <li><a href=\'#0\'>' + (i + 1) + '</a></li>\n    ');
+    $('.work-paginator ul').append('\n    <li><a>' + (i + 1) + '</a></li>\n    ');
 }
 
 workPaginator.css('top', '-' + (workSection.height() / 2 - 70) + 'px');

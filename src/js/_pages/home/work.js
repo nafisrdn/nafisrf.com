@@ -17,7 +17,7 @@ let active = true;
 for (let i = 0; i < groupLength; i++) {
     $('.work-paginator ul')
     .append(`
-    <li><a href='#0'>${i + 1}</a></li>
+    <li><a>${i + 1}</a></li>
     `);
 }
 
