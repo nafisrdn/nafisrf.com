@@ -16,7 +16,7 @@ const injectString  = require('gulp-inject-string');
 gulp.task('sass', () => {
     return gulp.src('src/sass/**/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'uncompressed'}).on('error', sass.logError))
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions']
         }))
@@ -47,7 +47,7 @@ gulp.task('js', () => {
         }))
         .pipe(injectString.after("use strict';", '$(document).ready(function(){'))
         .pipe(injectString.append('});'))
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.stream());
