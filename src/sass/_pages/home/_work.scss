@@ -65,6 +65,8 @@ section#work{
 
                 img{
                     width: 80%;
+                    max-height: 467px;
+                    object-fit: cover;
                 }
             }
 
@@ -106,6 +108,7 @@ section#work{
 
                     img{
                         width: 100%;
+                        max-height: 207px;
                         float: none;
                     }
                 }
