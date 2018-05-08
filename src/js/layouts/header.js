@@ -58,8 +58,32 @@ function navShow(b) {
 
         navToggle.classList.remove('is-open');
     }
-
-
-
-
 }
+
+$('body').scrollspy({ target: "header#top" });
+
+$("header#top a").on('click', function (event) {
+
+
+
+    if (this.hash !== "") {
+
+        let offset = 0;
+
+        event.preventDefault();
+
+        var hash = this.hash;
+
+        if (hash == "#work") {
+            offset = ($(hash).height() / 2) - ($(window).height() / 2) + 60;
+        }
+
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top + offset
+        }, 300, function () {
+            // window.location.hash = hash;
+        });
+
+    }
+
+});
