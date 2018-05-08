@@ -68,6 +68,7 @@ $("header#top a").on('click', function (event) {
 
     if (this.hash !== "") {
 
+        let speed = 600;
         let offset = 0;
 
         event.preventDefault();
@@ -80,11 +81,12 @@ $("header#top a").on('click', function (event) {
 
         if (hash == "#contact") {
             offset = 999;
+            speed = 800;
         }
 
         $('html, body').animate({
             scrollTop: $(hash).offset().top + offset
-        }, 400, function () {
+        }, speed, function () {
             // window.location.hash = hash;
         });
 
