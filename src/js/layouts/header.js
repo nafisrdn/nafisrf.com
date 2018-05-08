@@ -78,9 +78,13 @@ $("header#top a").on('click', function (event) {
             offset = ($(hash).height() / 2) - ($(window).height() / 2) + 60;
         }
 
+        if (hash == "#contact") {
+            offset = 999;
+        }
+
         $('html, body').animate({
             scrollTop: $(hash).offset().top + offset
-        }, 300, function () {
+        }, 400, function () {
             // window.location.hash = hash;
         });
 
