@@ -56,17 +56,50 @@ section#work{
 
                 position: relative;
 
+                &::after{
+                    clear: both;
+                    content: "";
+                    display: block;
+                }
+
                 .work-title{
                     color: $aqua;
                     font-size: 3rem;
                     margin: 0;
                     position: absolute;
+                    z-index: 2;
                 }
 
                 img{
                     width: 80%;
                     max-height: 467px;
                     object-fit: cover;
+                }
+
+                a:hover .cover-img-text {
+                    opacity: 1;
+                }
+
+                .cover-img-text{
+                    position: absolute;
+                    width: 80%;
+                    height: 50%;
+                    background: rgba(49, 53, 61, 0.93);
+                    opacity: 0;
+
+                    transition: 1s all;
+
+                    span{
+                        font-size: 3rem;
+                        color: white;
+                        display: block;
+                        width: 100%;
+                        padding: 10px 0px;
+                        text-align: center;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
                 }
             }
 
@@ -83,6 +116,10 @@ section#work{
                 img{
 
                 }
+
+                .cover-img-text{
+                    bottom: 0;
+                }
             }
 
             .article-right{
@@ -97,6 +134,11 @@ section#work{
                 img{
                     float: right;
                 }
+
+                .cover-img-text{
+                    top: 0;
+                    right: 0;
+                }
             }
 
             @media (max-width: $breakpoint-desktop){
@@ -110,6 +152,16 @@ section#work{
                         width: 100%;
                         max-height: 207px;
                         float: none;
+                    }
+
+                    .cover-img-text{
+                        width: 100%;
+                        height: 40%;
+                        top: initial !important;
+
+                        span{
+                            font-size: 2.3rem;
+                        }
                     }
                 }
             }

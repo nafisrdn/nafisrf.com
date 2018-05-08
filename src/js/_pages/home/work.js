@@ -11,9 +11,6 @@ let endIndex = (group.length / visible) - 1;
 let active = true;
 
 
-
-
-
 for (let i = 0; i < groupLength; i++) {
     $('.work-paginator ul')
     .append(`
