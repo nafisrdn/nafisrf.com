@@ -1,19 +1,10 @@
 const sectionWork = document.querySelector('section#work');
 const workArticles = document.querySelectorAll('section#work article');
 
-
-// for (let i = 0; i < workArticles.length; i++) {
-//     const article = workArticles[i];
-    
-//     const title = document.querySelector(`article.${article.classList}`);
-    
-
-//     article.addEventListener('mouseover', () => {
-//         title.classList.add('article-hover');
-//     });
-
-//     article.addEventListener('mouseleave', () => {
-//         title.classList.remove('article-hover');
-//     });
-
-// }
+$('.contact-btn').on('click', function () {
+    $('html, body').animate({
+        scrollTop: $('html').height()
+    }, 800, function () {
+        // window.location.hash = '';
+    });
+});
