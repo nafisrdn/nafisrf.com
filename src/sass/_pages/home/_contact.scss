@@ -27,7 +27,7 @@ section#contact{
             .label-email{
                 float: right;
 
-                color: #707070;
+                color: rgba(0, 98, 255, 0.5);
 
                 margin-top: -2em;
                 font-size: 1.5rem;
@@ -44,7 +44,7 @@ section#contact{
                     width: 0.3em;
                     display: block;
                     margin: 0.1em auto;
-                    background: #707070;
+                    background: rgba(0, 98, 255, 0.5);
                 }
             }
 
@@ -56,7 +56,7 @@ section#contact{
             .email{
                 
 
-                border: 0.1rem solid #707070;
+                border: 0.3rem solid rgba(0, 98, 255, 0.5);
                 
                 padding: 2em 2.3em;
                 cursor: pointer;
