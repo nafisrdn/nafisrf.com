@@ -2,6 +2,7 @@
 
 let aboutSection = $('section#about');
 let skillSection = $('section#skill');
+let contactSection = $('section#contact');
 
 if (aboutSection.length) {
     let showAboutSketch = new NoiseSketch(aboutSection, '/img/particles.jpg').sketch;
@@ -24,3 +25,14 @@ if (skillSection.length) {
     let skillSectionSketch2 = new p5(test.sketch, 'skill');
 }
 
+if (contactSection.length) {
+    let objTotal = 5;
+
+    if ($(window).width() < 960) {
+        objTotal = 3;
+    }
+
+    let test = new BubbleAndNum(contactSection, objTotal);
+
+    let contactSectionSketch = new p5(test.sketch, 'contact');
+}
