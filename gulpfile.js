@@ -76,6 +76,11 @@ gulp.task('img',() =>{
         .pipe(gulp.dest('dist/img'));
 })
 
+gulp.task('video', () => {
+    return gulp.src('src/video/**/*')
+        .pipe(gulp.dest('dist/video'))
+})
+
 gulp.task('clean', function () {
     return del(['dist/']);
 });

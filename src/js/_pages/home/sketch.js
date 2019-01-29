@@ -5,9 +5,9 @@ let skillSection = $('section#skill');
 let contactSection = $('section#contact');
 
 if (aboutSection.length) {
-    let showAboutSketch = new NoiseSketch(aboutSection, '/img/particles.jpg').sketch;
+    // let showAboutSketch = new NoiseSketch(aboutSection, '/img/particles.jpg').sketch;
 
-    let showAboutSketch2 = new p5(showAboutSketch, 'about');
+    // let showAboutSketch2 = new p5(showAboutSketch, 'about');
 }
 
 
